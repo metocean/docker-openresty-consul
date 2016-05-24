@@ -2,15 +2,17 @@ FROM openresty/openresty:1.9.7.4-centos
 
 RUN yum install -y unzip
 
-ADD . /install/
+COPY . /tmp/
 
 RUN mkdir -p /usr/local/openresty/nginx/conf/conf.d/ &&\
-    cp /install/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+    cp /tmp/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 
-RUN /install/install-consul.sh
+RUN /tmp/install-consul.sh
 
 COPY ./supervisor/ /etc/supervisor/
-RUN /install/install-supervisor.sh
+RUN /tmp/install-supervisor.sh
+
+RUN rm -rf /tmp/*
 
 ENTRYPOINT ["/usr/bin/supervisord", \
      "-c", \

@@ -18,5 +18,3 @@ cd /tmp
 curl -o ui.zip -L https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_web_ui.zip
 unzip ui.zip  &&\
 mv static /consul-ui
-
-rm -rf /tmp/*
