@@ -1,4 +1,6 @@
-FROM metocean/openresty:v1.0.0
+FROM openresty/openresty:1.9.7.4-centos
+
+RUN yum install -y unzip
 
 ADD . /install/
 
