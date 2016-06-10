@@ -14,6 +14,8 @@ RUN /tmp/install-supervisor.sh
 
 RUN rm -rf /tmp/*
 
+RUN mkdir -p /logs/nginx
+
 ENTRYPOINT ["/usr/bin/supervisord", \
      "-c", \
      "/etc/supervisor/supervisor.conf", \
